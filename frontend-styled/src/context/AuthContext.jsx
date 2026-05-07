@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 
     const navigate = useNavigate();
 useEffect(() => {
-  const publicPaths = ["/login", "/register"];
+  const publicPaths = ["/login", "/register","/"];
   if (!publicPaths.includes(location.pathname)) {
     fetchUser();
   } else {
