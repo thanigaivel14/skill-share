@@ -7,6 +7,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [userinfo, setUserInfo] = useState({ username: "", email: "", password: "", location: "" });
   const [error, setError] = useState("");
+console.log(import.meta.env.VITE_SOCKET_URL);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
