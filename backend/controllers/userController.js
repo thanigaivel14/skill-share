@@ -36,13 +36,14 @@ const register = asyncHandler(async (req, res) => {
     location,
   });
 
+
   // 4. Send cookie and return user info
   if (user) {
     res
       .cookie('token', generateToken(user._id), {
         httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
-        sameSite: 'None',
+        sameSite: 'none',
         // domain: '.onrender.com', // optional for subdomain cases
         maxAge: 24 * 60 * 60 * 1000, // 1 day
       })
@@ -83,8 +84,8 @@ const login = asyncHandler(async (req, res) => {
   res
     .cookie('token', generateToken(user._id), {
       httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production"?"none":"lax",
       maxAge: 24 * 60 * 60 * 1000,
     })
     .status(200)
